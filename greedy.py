@@ -2,13 +2,13 @@ import csv
 
 reader = csv.reader(open("MenuIngredients.csv"))
 
-ingredients = next(reader)[1:]
+ingredients = next(reader)[2:]
 print(ingredients)
 
 things = {}
 
 for row in list(reader):
-	things[row[0]] = {i for i,c in enumerate(row[1:]) if c!=""}
+	things[row[0]] = {i for i,c in enumerate(row[2:]) if c!=""}
 
 print(len(ingredients))
 mcover = set()
@@ -24,6 +24,9 @@ test = [False for i in range(len(ingredients))]
 for ingredient in mcover:
 	for x in things[ingredient]:
 		test[x] = True
+
+print(", ".join(mcover))
+print(len(mcover))
 
 #print(test)
 print(all(test))
